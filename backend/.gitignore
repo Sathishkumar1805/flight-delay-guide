@@ -1,0 +1,9 @@
+# Secrets
+application-local.yml
+application-local.yaml
+.env
+
+# Build
+target/
+*.jar
+*.war
