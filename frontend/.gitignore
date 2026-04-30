@@ -1,0 +1,9 @@
+# Secrets
+.env
+.env.local
+src/environments/environment.local.ts
+
+# Build
+node_modules/
+dist/
+.angular/

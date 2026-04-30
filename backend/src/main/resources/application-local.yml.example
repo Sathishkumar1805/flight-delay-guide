@@ -1,0 +1,18 @@
+# =============================================
+# LOCAL DEVELOPMENT OVERRIDES
+# Copy to application-local.yml and add real keys
+# NEVER commit application-local.yml
+# =============================================
+ai:
+  provider: gemini
+  gemini:
+    api-key: PASTE_YOUR_GEMINI_KEY_HERE
+  claude:
+    api-key: PASTE_YOUR_CLAUDE_KEY_HERE
+
+aviation:
+  aviationstack:
+    api-key: PASTE_YOUR_AVIATIONSTACK_KEY_HERE
+
+cors:
+  allowed-origins: http://localhost:4200
