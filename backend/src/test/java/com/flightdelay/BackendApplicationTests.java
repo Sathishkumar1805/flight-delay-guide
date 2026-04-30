@@ -1,4 +1,4 @@
-package com.flightdelay.backend;
+package com.flightdelay;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

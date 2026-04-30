@@ -1,4 +1,4 @@
-package com.flightdelay.backend.model.request;
+package com.flightdelay.model.request;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

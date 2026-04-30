@@ -1,8 +1,8 @@
-package com.flightdelay.backend.service;
+package com.flightdelay.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.flightdelay.backend.model.response.FlightVerification;
+import com.flightdelay.model.response.FlightVerification;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

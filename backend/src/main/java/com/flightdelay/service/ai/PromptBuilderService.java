@@ -1,7 +1,7 @@
-package com.flightdelay.backend.service.ai;
+package com.flightdelay.service.ai;
 
-import com.flightdelay.backend.model.request.FlightIncidentRequest;
-import com.flightdelay.backend.model.response.FlightVerification;
+import com.flightdelay.model.request.FlightIncidentRequest;
+import com.flightdelay.model.response.FlightVerification;
 import org.springframework.stereotype.Service;
 
 @Service

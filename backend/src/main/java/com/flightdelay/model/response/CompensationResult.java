@@ -1,4 +1,4 @@
-package com.flightdelay.backend.model.response;
+package com.flightdelay.model.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

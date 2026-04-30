@@ -1,4 +1,4 @@
-package com.flightdelay.backend.config;
+package com.flightdelay.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

@@ -1,10 +1,10 @@
-package com.flightdelay.backend.service.ai;
+package com.flightdelay.service.ai;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.flightdelay.backend.model.request.FlightIncidentRequest;
-import com.flightdelay.backend.model.response.CompensationResult;
-import com.flightdelay.backend.model.response.FlightVerification;
+import com.flightdelay.model.request.FlightIncidentRequest;
+import com.flightdelay.model.response.CompensationResult;
+import com.flightdelay.model.response.FlightVerification;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

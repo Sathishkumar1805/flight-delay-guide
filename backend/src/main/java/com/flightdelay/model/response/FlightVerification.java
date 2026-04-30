@@ -1,4 +1,4 @@
-package com.flightdelay.backend.model.response;
+package com.flightdelay.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

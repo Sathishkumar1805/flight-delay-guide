@@ -1,4 +1,4 @@
-package com.flightdelay.backend.service.ai;
+package com.flightdelay.service.ai;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,11 +1,11 @@
-package com.flightdelay.backend.controller;
+package com.flightdelay.controller;
 
-import com.flightdelay.backend.model.request.FlightIncidentRequest;
-import com.flightdelay.backend.model.response.CompensationResult;
-import com.flightdelay.backend.model.response.FlightVerification;
-import com.flightdelay.backend.service.FlightCompensationService;
-import com.flightdelay.backend.service.FlightDataService;
-import com.flightdelay.backend.service.ai.AIServiceFactory;
+import com.flightdelay.model.request.FlightIncidentRequest;
+import com.flightdelay.model.response.CompensationResult;
+import com.flightdelay.model.response.FlightVerification;
+import com.flightdelay.service.FlightCompensationService;
+import com.flightdelay.service.FlightDataService;
+import com.flightdelay.service.ai.AIServiceFactory;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
