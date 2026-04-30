@@ -40,7 +40,7 @@ public class PromptBuilderService {
 
                 EC 261/2004 compensation thresholds (3+ hour delays, non-extraordinary):
                 - €250 for flights up to 1500 km
-                - €400 for intra-EU flights over 1500 km and other flights 1500–3500 km
+                - €400 for intra-EU flights over 1500 km and other flights 1500-3500 km
                 - €600 for flights over 3500 km
                 Consider extraordinary circumstances (weather, ATC strikes, security) which exempt airlines.
                 """.formatted(
