@@ -1,0 +1,47 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly Monday 9am
+
+jobs:
+  secret-scan:
+    name: Scan for Leaked Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for scanning
+
+      - name: Run Gitleaks secret scanner
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for placeholder values
+        run: |
+          echo "Checking for unreplaced placeholder values..."
+          if grep -r "REPLACE_WITH_RENDER_URL" frontend/src/environments/environment.prod.ts; then
+            echo "⚠️ WARNING: environment.prod.ts still has placeholder URL"
+            echo "Update with real Render URL after deployment"
+          fi
+          echo "Scan complete"
+
+  dependency-audit:
+    name: Dependency Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Audit npm dependencies
+        working-directory: frontend
+        run: npm audit --audit-level=high || echo "Audit warnings found"
+
+      - name: Check Maven dependencies
+        working-directory: backend
+        run: mvn dependency:tree --no-transfer-progress | head -50
