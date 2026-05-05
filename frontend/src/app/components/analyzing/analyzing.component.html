@@ -1,0 +1,25 @@
+<div class="analyzing">
+  <div class="analyzing-icon">
+    <div class="spinner"></div>
+    <svg class="plane-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+    </svg>
+  </div>
+
+  <h2 class="analyzing-title">Analyzing Your Claim</h2>
+  <p class="analyzing-subtitle">This takes a few seconds. Please don't close this window.</p>
+
+  <div class="steps">
+    <div class="step" *ngFor="let step of steps"
+      [class.step--active]="step.active"
+      [class.step--done]="step.done">
+      <div class="step-indicator">
+        <span class="step-dot" *ngIf="!step.done"></span>
+        <svg *ngIf="step.done" class="step-check" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <span class="step-label">{{ step.label }}</span>
+    </div>
+  </div>
+</div>

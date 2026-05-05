@@ -1,0 +1,84 @@
+<div class="results">
+  <!-- Eligibility Banner -->
+  <div class="eligibility-banner" [class.eligible]="result.eligible" [class.ineligible]="!result.eligible">
+    <div class="eligibility-icon">
+      <span *ngIf="result.eligible">✓</span>
+      <span *ngIf="!result.eligible">✕</span>
+    </div>
+    <div class="eligibility-text">
+      <h2 *ngIf="result.eligible">You Are Eligible for Compensation</h2>
+      <h2 *ngIf="!result.eligible">Not Eligible for Compensation</h2>
+      <p *ngIf="result.eligible">Up to <strong>{{ result.currency || '€' }}{{ result.compensationAmount | number }}</strong> under {{ result.regulation }}</p>
+      <p *ngIf="!result.eligible">{{ result.explanation }}</p>
+    </div>
+  </div>
+
+  <!-- Flight Verification Card -->
+  <div class="card" *ngIf="result.flightVerification">
+    <h3 class="card-title">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+      Flight Verification
+    </h3>
+    <div class="verification-grid">
+      <div class="v-item">
+        <span class="v-label">Flight</span>
+        <span class="v-value">{{ result.flightVerification.flightNumber }}</span>
+      </div>
+      <div class="v-item">
+        <span class="v-label">Status</span>
+        <span class="v-value status-badge" [class.delayed]="result.flightVerification.status === 'DELAYED'">
+          {{ result.flightVerification.status }}
+        </span>
+      </div>
+      <div class="v-item" *ngIf="result.flightVerification.delayMinutes">
+        <span class="v-label">Delay</span>
+        <span class="v-value">{{ result.flightVerification.delayMinutes }} min</span>
+      </div>
+      <div class="v-item">
+        <span class="v-label">Verified</span>
+        <span class="v-value">{{ result.flightVerification.verified ? 'Yes' : 'Unverified' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Regulation Card -->
+  <div class="card" *ngIf="result.eligible">
+    <h3 class="card-title">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
+      Applicable Regulation
+    </h3>
+    <div class="regulation-tag">{{ result.regulation }}</div>
+    <p class="regulation-details">{{ result.regulationDetails }}</p>
+    <p class="explanation">{{ result.explanation }}</p>
+  </div>
+
+  <!-- Immediate Rights -->
+  <div class="card" *ngIf="result.immediateRights && result.immediateRights.length">
+    <h3 class="card-title">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+      Your Immediate Rights
+    </h3>
+    <div class="rights-chips">
+      <span class="chip" *ngFor="let right of result.immediateRights">{{ right }}</span>
+    </div>
+  </div>
+
+  <!-- Demand Letter -->
+  <div class="card card--letter" *ngIf="result.eligible && result.demandLetter">
+    <div class="letter-header">
+      <h3 class="card-title">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        Demand Letter
+      </h3>
+      <div class="letter-actions">
+        <button class="btn-action" (click)="copyLetter()">
+          {{ copySuccess ? '✓ Copied!' : 'Copy' }}
+        </button>
+        <button class="btn-action btn-action--primary" (click)="downloadLetter()">Download .txt</button>
+      </div>
+    </div>
+    <pre class="letter-body">{{ result.demandLetter }}</pre>
+  </div>
+
+  <button class="btn-start-over" (click)="startOver.emit()">← Start a New Claim</button>
+</div>

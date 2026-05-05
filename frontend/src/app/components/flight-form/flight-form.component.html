@@ -1,0 +1,72 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="step-form" novalidate>
+  <h2 class="step-title">Flight Details</h2>
+  <p class="step-subtitle">Enter the details of your delayed or cancelled flight.</p>
+
+  <div class="form-row">
+    <div class="field">
+      <label for="flightNumber">Flight Number *</label>
+      <input id="flightNumber" formControlName="flightNumber" type="text"
+        placeholder="e.g. BA178" [class.error]="submitted && f['flightNumber'].errors">
+      <span class="error-msg" *ngIf="submitted && f['flightNumber'].errors?.['required']">Flight number is required</span>
+      <span class="error-msg" *ngIf="submitted && f['flightNumber'].errors?.['pattern']">Enter a valid flight number (e.g. BA178)</span>
+    </div>
+
+    <div class="field">
+      <label for="flightDate">Flight Date *</label>
+      <input id="flightDate" formControlName="flightDate" type="date"
+        [max]="maxDate()" [class.error]="submitted && f['flightDate'].errors">
+      <span class="error-msg" *ngIf="submitted && f['flightDate'].errors?.['required']">Date is required</span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="airline">Airline *</label>
+    <select id="airline" formControlName="airline" [class.error]="submitted && f['airline'].errors">
+      <option value="">Select airline...</option>
+      <option *ngFor="let a of airlines" [value]="a.iata">{{ a.name }} ({{ a.iata }})</option>
+    </select>
+    <span class="error-msg" *ngIf="submitted && f['airline'].errors?.['required']">Airline is required</span>
+  </div>
+
+  <div class="form-row">
+    <div class="field">
+      <label for="departureAirport">Departure Airport (IATA) *</label>
+      <input id="departureAirport" formControlName="departureAirport" type="text"
+        placeholder="e.g. LHR" maxlength="3" style="text-transform:uppercase"
+        [class.error]="submitted && f['departureAirport'].errors">
+      <span class="error-msg" *ngIf="submitted && f['departureAirport'].errors?.['required']">Departure airport is required</span>
+      <span class="error-msg" *ngIf="submitted && f['departureAirport'].errors?.['pattern']">Enter 3-letter IATA code</span>
+    </div>
+
+    <div class="field">
+      <label for="arrivalAirport">Arrival Airport (IATA) *</label>
+      <input id="arrivalAirport" formControlName="arrivalAirport" type="text"
+        placeholder="e.g. CDG" maxlength="3" style="text-transform:uppercase"
+        [class.error]="submitted && f['arrivalAirport'].errors">
+      <span class="error-msg" *ngIf="submitted && f['arrivalAirport'].errors?.['required']">Arrival airport is required</span>
+      <span class="error-msg" *ngIf="submitted && f['arrivalAirport'].errors?.['pattern']">Enter 3-letter IATA code</span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="field">
+      <label for="departureCountry">Departure Country *</label>
+      <select id="departureCountry" formControlName="departureCountry" [class.error]="submitted && f['departureCountry'].errors">
+        <option value="">Select country...</option>
+        <option *ngFor="let c of countries" [value]="c.code">{{ c.name }}</option>
+      </select>
+      <span class="error-msg" *ngIf="submitted && f['departureCountry'].errors?.['required']">Country is required</span>
+    </div>
+
+    <div class="field">
+      <label for="arrivalCountry">Arrival Country *</label>
+      <select id="arrivalCountry" formControlName="arrivalCountry" [class.error]="submitted && f['arrivalCountry'].errors">
+        <option value="">Select country...</option>
+        <option *ngFor="let c of countries" [value]="c.code">{{ c.name }}</option>
+      </select>
+      <span class="error-msg" *ngIf="submitted && f['arrivalCountry'].errors?.['required']">Country is required</span>
+    </div>
+  </div>
+
+  <button type="submit" class="btn-primary">Continue to Incident Details →</button>
+</form>

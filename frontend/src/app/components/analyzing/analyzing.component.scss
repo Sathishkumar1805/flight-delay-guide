@@ -1,0 +1,117 @@
+.analyzing {
+  max-width: 480px;
+  margin: 48px auto;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.analyzing-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+
+  .plane-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    color: #c9a84c;
+  }
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #c9a84c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.analyzing-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a1628;
+  margin: 0 0 8px;
+}
+
+.analyzing-subtitle {
+  color: #64748b;
+  margin: 0 0 40px;
+}
+
+.steps {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
+  transition: all 0.3s;
+
+  &--active {
+    border-color: #c9a84c;
+    background: #fffbf0;
+  }
+
+  &--done {
+    border-color: #d1fae5;
+    background: #f0fdf4;
+  }
+}
+
+.step-indicator {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+
+  .step--active & {
+    background: #c9a84c;
+    animation: pulse 1s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+.step-check {
+  width: 20px;
+  height: 20px;
+  color: #10b981;
+}
+
+.step-label {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+
+  .step--done & { color: #065f46; }
+  .step--active & { color: #0a1628; font-weight: 600; }
+}

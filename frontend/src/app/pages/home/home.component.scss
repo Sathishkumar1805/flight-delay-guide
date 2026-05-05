@@ -1,0 +1,264 @@
+.home {
+  background: #f8fafc;
+}
+
+// Hero
+.hero {
+  background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%);
+  color: #fff;
+  padding: 80px 24px 96px;
+
+  &-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.regulation-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.badge {
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 20px;
+
+  @media (max-width: 600px) { font-size: 28px; }
+}
+
+.hero-highlight {
+  color: #c9a84c;
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: #a0b0c8;
+  margin: 0 0 36px;
+  line-height: 1.6;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  background: #c9a84c;
+  color: #0a1628;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+
+  &:hover {
+    background: #e0bf6a;
+    transform: translateY(-1px);
+  }
+}
+
+.hero-trust {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+// Stats
+.stats {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+
+  &-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+
+  &-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0a1628;
+  }
+
+  &-label {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+  }
+}
+
+.stat-divider {
+  width: 1px;
+  height: 48px;
+  background: #e5e7eb;
+
+  @media (max-width: 600px) { display: none; }
+}
+
+// How it works
+.how {
+  padding: 72px 24px;
+
+  &-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0a1628;
+  margin: 0 0 40px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+
+  @media (max-width: 700px) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.how-step {
+  text-align: center;
+
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0a1628;
+    margin: 12px 0 8px;
+  }
+
+  p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.how-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0a1628;
+  color: #c9a84c;
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.how-cta { margin-top: 8px; }
+
+// Regulations
+.regulations {
+  background: #0a1628;
+  padding: 72px 24px;
+
+  &-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-title { color: #fff; }
+}
+
+.reg-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: left;
+
+  @media (max-width: 700px) { grid-template-columns: 1fr; }
+}
+
+.reg-card {
+  background: #1a2a4a;
+  border: 1.5px solid #2a3a5a;
+  border-radius: 10px;
+  padding: 24px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 8px 0 12px;
+  }
+
+  p {
+    font-size: 13px;
+    color: #a0b0c8;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 13px;
+      color: #a0b0c8;
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #c9a84c;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.reg-tag {
+  display: inline-block;
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}

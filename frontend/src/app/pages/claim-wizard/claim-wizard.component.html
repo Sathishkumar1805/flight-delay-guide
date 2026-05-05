@@ -1,0 +1,51 @@
+<div class="wizard">
+  <!-- Progress bar (hide on analyzing step for cleaner look) -->
+  <div class="progress-bar" *ngIf="currentStep !== 'analyzing'">
+    <div class="progress-inner">
+      <div class="progress-step" *ngFor="let step of steps; let i = index"
+        [class.active]="i === stepIndex"
+        [class.done]="i < stepIndex">
+        <div class="progress-dot">
+          <span *ngIf="i >= stepIndex">{{ i + 1 }}</span>
+          <svg *ngIf="i < stepIndex" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <span class="progress-label">{{ step.label }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error banner -->
+  <div class="error-banner" *ngIf="errorMessage">
+    <span>{{ errorMessage }}</span>
+    <button (click)="errorMessage = ''">✕</button>
+  </div>
+
+  <!-- Step content -->
+  <div class="wizard-body">
+    <app-flight-form
+      *ngIf="currentStep === 'flight'"
+      (stepComplete)="onFlightStepComplete($event)">
+    </app-flight-form>
+
+    <app-incident-form
+      *ngIf="currentStep === 'incident'"
+      (stepComplete)="onIncidentStepComplete($event)">
+    </app-incident-form>
+
+    <app-analyzing
+      *ngIf="currentStep === 'analyzing'"
+      [request]="fullRequest"
+      (analysisComplete)="onAnalysisComplete($event)"
+      (analysisError)="onAnalysisError($event)">
+    </app-analyzing>
+
+    <app-results
+      *ngIf="currentStep === 'results' && result"
+      [result]="result"
+      [flightNumber]="formData.flightNumber || ''"
+      (startOver)="onStartOver()">
+    </app-results>
+  </div>
+</div>

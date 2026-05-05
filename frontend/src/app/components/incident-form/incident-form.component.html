@@ -1,0 +1,46 @@
+<div class="step-form">
+  <h2 class="step-title">Incident Details</h2>
+  <p class="step-subtitle">Tell us what happened with your flight.</p>
+
+  <div class="field-group">
+    <label class="group-label">What happened? *</label>
+    <div class="toggle-grid">
+      <button type="button" class="toggle-card" *ngFor="let opt of incidentTypes"
+        [class.selected]="incidentType === opt.value"
+        (click)="incidentType = opt.value">
+        <span class="toggle-icon">{{ opt.icon }}</span>
+        <span class="toggle-label">{{ opt.label }}</span>
+        <span class="toggle-desc">{{ opt.description }}</span>
+      </button>
+    </div>
+    <span class="error-msg" *ngIf="submitted && !incidentType">Please select what happened</span>
+  </div>
+
+  <div class="field-group" *ngIf="showDelayDuration">
+    <label class="group-label">How long was the delay? *</label>
+    <div class="toggle-grid">
+      <button type="button" class="toggle-card" *ngFor="let opt of delayDurations"
+        [class.selected]="delayDuration === opt.value"
+        (click)="delayDuration = opt.value">
+        <span class="toggle-icon">{{ opt.icon }}</span>
+        <span class="toggle-label">{{ opt.label }}</span>
+        <span class="toggle-desc">{{ opt.description }}</span>
+      </button>
+    </div>
+    <span class="error-msg" *ngIf="submitted && incidentType === 'DELAY' && !delayDuration">Please select delay duration</span>
+  </div>
+
+  <div class="field-group">
+    <label class="group-label">Reason given by airline <span class="optional">(optional)</span></label>
+    <div class="toggle-grid toggle-grid--5">
+      <button type="button" class="toggle-card toggle-card--sm" *ngFor="let opt of airlineReasons"
+        [class.selected]="airlineReason === opt.value"
+        (click)="airlineReason = airlineReason === opt.value ? '' : opt.value">
+        <span class="toggle-icon">{{ opt.icon }}</span>
+        <span class="toggle-label">{{ opt.label }}</span>
+      </button>
+    </div>
+  </div>
+
+  <button type="button" class="btn-primary" (click)="onSubmit()">Analyze My Claim →</button>
+</div>
