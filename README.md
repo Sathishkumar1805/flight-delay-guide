@@ -10,8 +10,10 @@ A full-stack flight delay compensation checker. Passengers enter their flight de
 
 ```
 flight-delay-guide/
-├── backend/      # Spring Boot REST API
-├── frontend/     # Angular 15 SPA
+├── backend/
+│   ├── Dockerfile        # Multi-stage Docker build for Render
+│   └── src/              # Spring Boot REST API (Java 17)
+├── frontend/             # Angular 15 SPA
 ├── .github/
 │   └── workflows/
 │       ├── backend-ci-cd.yml    # Java → Render
@@ -104,10 +106,10 @@ In your Render service → **Environment** tab, add:
 
 Click **Create Web Service**. Render will:
 1. Clone your repo
-2. Run `mvn package -DskipTests`
-3. Start the JAR on port `$PORT` (auto-injected by Render)
+2. Build the Docker image (runs `mvn package` inside the multi-stage build)
+3. Start the container — `$PORT` is auto-injected by Render
 
-First deploy takes ~3–5 minutes. Your backend URL will be:
+First deploy takes ~5–8 minutes (Docker image pull + Maven build). Your backend URL will be:
 ```
 https://flight-delay-backend.onrender.com
 ```
@@ -198,7 +200,7 @@ Once all secrets are added, push any backend change to trigger the full CI/CD pi
 
 | Workflow | Trigger | Jobs |
 |----------|---------|------|
-| `backend-ci-cd.yml` | Push to `backend/**` | Maven test → build JAR → deploy to Render |
+| `backend-ci-cd.yml` | Push to `backend/**` | Maven test → build JAR → trigger Render Docker deploy |
 | `frontend-ci-cd.yml` | Push to `frontend/**` | npm ci → ng test → ng build → deploy to Vercel |
 | `security-scan.yml` | Push to main + weekly | Gitleaks secret scan + npm/Maven dependency audit |
 
