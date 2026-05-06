@@ -73,6 +73,8 @@ Go to [render.com](https://render.com) and sign up (free). Connect your GitHub a
 
 ### Step 3 — Create a new Web Service
 
+> Render has no native Java runtime. The backend deploys via **Docker** using the `Dockerfile` in the `backend/` folder.
+
 1. Click **New → Web Service**
 2. Select your `flight-delay-guide` repository
 3. Configure the service:
@@ -81,10 +83,11 @@ Go to [render.com](https://render.com) and sign up (free). Connect your GitHub a
 |---------|-------|
 | **Name** | `flight-delay-backend` |
 | **Root Directory** | `backend` |
-| **Runtime** | `Java` |
-| **Build Command** | `mvn package -DskipTests --no-transfer-progress` |
-| **Start Command** | `java -jar target/backend-0.0.1-SNAPSHOT.jar` |
+| **Runtime** | `Docker` |
+| **Dockerfile Path** | `./Dockerfile` (auto-detected) |
 | **Instance Type** | Free |
+
+Render will auto-detect the `Dockerfile` and use it — no build or start commands needed.
 
 ### Step 4 — Add environment variables in Render
 
