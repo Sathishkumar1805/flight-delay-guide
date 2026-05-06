@@ -34,8 +34,8 @@ public class FlightDataService {
         log.info("Using user-provided data for {}", request.getFlightNumber());
         return FlightVerification.builder()
                 .flightNumber(request.getFlightNumber())
-                .airline(request.getAirlineName())
-                .delayMinutes(request.getDelayHours() != null ? request.getDelayHours() * 60 : null)
+                .airline(request.getAirline())
+                .delayMinutes(request.getDelayDuration() != null ? request.getDelayDuration() * 60 : null)
                 .status(request.getIncidentType().name())
                 .source(FlightVerification.Source.USER_PROVIDED)
                 .build();
