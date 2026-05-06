@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://flight-delay-backend.onrender.com/api'
+  apiUrl: 'https://flight-delay-guide.onrender.com/api'
 };
