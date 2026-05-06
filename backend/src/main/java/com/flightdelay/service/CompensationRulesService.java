@@ -32,7 +32,7 @@ public class CompensationRulesService {
     public String determineRegulation(FlightIncidentRequest request) {
         boolean depEu = EU_COUNTRY_CODES.contains(request.getDepartureCountry().toUpperCase(Locale.ROOT));
         boolean arrEu = EU_COUNTRY_CODES.contains(request.getArrivalCountry().toUpperCase(Locale.ROOT));
-        boolean euAirline = EU_AIRLINE_IATA_CODES.contains(request.getAirlineIata().toUpperCase(Locale.ROOT));
+        boolean euAirline = EU_AIRLINE_IATA_CODES.contains(request.getAirline().toUpperCase(Locale.ROOT));
 
         if (depEu || (arrEu && euAirline)) {
             return "EC 261/2004";

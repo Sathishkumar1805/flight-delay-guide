@@ -21,10 +21,7 @@ public class FlightIncidentRequest {
     private String flightNumber;
 
     @NotBlank
-    private String airlineIata;
-
-    @NotBlank
-    private String airlineName;
+    private String airline;
 
     @NotNull
     private LocalDate flightDate;
@@ -44,11 +41,11 @@ public class FlightIncidentRequest {
     @NotNull
     private IncidentType incidentType;
 
-    private Integer delayHours;
+    private Integer delayDuration;
 
     private String airlineReason;
 
     public enum IncidentType {
-        DELAYED, CANCELLED, DENIED_BOARDING, DOWNGRADED
+        DELAY, CANCELLATION, DENIED_BOARDING
     }
 }

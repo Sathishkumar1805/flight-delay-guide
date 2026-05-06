@@ -45,13 +45,13 @@ public class PromptBuilderService {
                 Consider extraordinary circumstances (weather, ATC strikes, security) which exempt airlines.
                 """.formatted(
                 request.getFlightNumber(),
-                request.getAirlineName(),
-                request.getAirlineIata(),
+                request.getAirline(),
+                request.getAirline(),
                 request.getFlightDate(),
                 request.getDepartureAirport(), request.getDepartureCountry(),
                 request.getArrivalAirport(), request.getArrivalCountry(),
                 request.getIncidentType(),
-                request.getDelayHours() != null ? request.getDelayHours() : "unknown",
+                request.getDelayDuration() != null ? request.getDelayDuration() : "unknown",
                 request.getAirlineReason() != null ? request.getAirlineReason() : "not provided",
                 verification.getSource(),
                 verification.getDelayMinutes() != null ? verification.getDelayMinutes() : "unknown",
