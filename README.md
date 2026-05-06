@@ -10,9 +10,8 @@ A full-stack flight delay compensation checker. Passengers enter their flight de
 
 ```
 flight-delay-guide/
-├── backend/
-│   ├── Dockerfile        # Multi-stage Docker build for Render
-│   └── src/              # Spring Boot REST API (Java 17)
+├── Dockerfile            # Multi-stage Docker build for Render (repo root)
+├── backend/              # Spring Boot REST API (Java 17)
 ├── frontend/             # Angular 15 SPA
 ├── .github/
 │   └── workflows/
@@ -84,12 +83,12 @@ Go to [render.com](https://render.com) and sign up (free). Connect your GitHub a
 | Setting | Value |
 |---------|-------|
 | **Name** | `flight-delay-backend` |
-| **Root Directory** | `backend` |
+| **Root Directory** | *(leave blank — repo root)* |
 | **Runtime** | `Docker` |
 | **Dockerfile Path** | `./Dockerfile` (auto-detected) |
 | **Instance Type** | Free |
 
-Render will auto-detect the `Dockerfile` and use it — no build or start commands needed.
+Render will auto-detect the `Dockerfile` at the repo root — no build or start commands needed.
 
 ### Step 4 — Add environment variables in Render
 

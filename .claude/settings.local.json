@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv frontend/. frontend_gitignore_bak)",
+      "Bash(cp frontend/.gitignore /tmp/frontend_gitignore_bak.txt)",
+      "Bash(ng new *)",
+      "Bash(npm --version)",
+      "Bash(ng version *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Sathish\\\\flight-delay-guide\\\\frontend\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(Out-String)",
+      "Bash(npx ng *)",
+      "Bash(grep -E \"\\\\.env$|application-local\\\\.yml\")",
+      "Bash(cat frontend/.gitignore)",
+      "Bash(cat backend/src/main/resources/application.yml)",
+      "Bash(chmod +x /c/Sathish/flight-delay-guide/.git/hooks/pre-commit)",
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
