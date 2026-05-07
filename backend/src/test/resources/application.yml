@@ -22,3 +22,18 @@ aviation:
 
 cors:
   allowed-origins: http://localhost:4200
+
+langchain4j:
+  google-ai-gemini:
+    api-key: TEST_KEY
+    model-name: gemini-1.5-flash
+    temperature: 0.1
+    max-output-tokens: 4096
+  anthropic:
+    api-key: TEST_KEY
+    model-name: claude-3-haiku-20240307
+    temperature: 0.1
+    max-tokens: 4096
+
+agentic:
+  enabled: false

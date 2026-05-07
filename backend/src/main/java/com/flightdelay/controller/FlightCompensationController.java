@@ -5,9 +5,11 @@ import com.flightdelay.model.response.CompensationResult;
 import com.flightdelay.model.response.FlightVerification;
 import com.flightdelay.service.FlightCompensationService;
 import com.flightdelay.service.FlightDataService;
+import com.flightdelay.service.agentic.AsyncAnalysisService;
 import com.flightdelay.service.ai.AIServiceFactory;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +24,19 @@ public class FlightCompensationController {
     private final FlightCompensationService compensationService;
     private final FlightDataService flightDataService;
     private final AIServiceFactory aiServiceFactory;
+    private final AsyncAnalysisService asyncAnalysisService;
+
+    @Value("${agentic.enabled:false}")
+    private boolean agenticEnabled;
 
     @PostMapping("/analyze")
     public ResponseEntity<CompensationResult> analyzeIncident(@Valid @RequestBody FlightIncidentRequest request) {
+        if (agenticEnabled) {
+            // Route to agentic multi-agent flow (Phase 3)
+            String jobId = asyncAnalysisService.submitAnalysis(request);
+            return ResponseEntity.ok(asyncAnalysisService.waitForResult(jobId, 28));
+        }
+        // Existing single-call flow — unchanged fallback
         return ResponseEntity.ok(compensationService.analyze(request));
     }
 
